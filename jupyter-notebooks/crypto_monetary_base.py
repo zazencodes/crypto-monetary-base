@@ -121,19 +121,6 @@ def plot_constant_supply_curve(
     step_size = int(len(supply) / max_size)
     dates = mpl.dates.date2num(supply.date.values[::step_size])
     
-    # Plot total supply
-    if plot_pct:
-        values = supply.total_supply_pct.values[::step_size]
-    else:
-        values = supply.total_supply.values[::step_size]
-    plt.plot_date(
-        dates,
-        values,
-        fmt='-',
-        lw=4,
-        label='total supply',
-    )
-    
     # Plot distributed supply
     if plot_pct:
         values = supply.distributed_supply_pct.values[::step_size]
@@ -147,6 +134,19 @@ def plot_constant_supply_curve(
         label='distributed supply ({})'.format(
             datetime.datetime.now().strftime('%b %Y')
         ),
+    )
+
+    # Plot total supply
+    if plot_pct:
+        values = supply.total_supply_pct.values[::step_size]
+    else:
+        values = supply.total_supply.values[::step_size]
+    plt.plot_date(
+        dates,
+        values,
+        fmt='-',
+        lw=4,
+        label='total supply',
     )
     
     # Plot current date
