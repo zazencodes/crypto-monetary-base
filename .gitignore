@@ -1,0 +1,8 @@
+.DS_Store
+*.pyc
+img
+__pycache__
+dev-*
+test*
+.vscode
+.ipynb_checkpoints
